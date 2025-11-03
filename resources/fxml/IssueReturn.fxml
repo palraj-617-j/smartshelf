@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="controllers.IssueReturnController" styleClass="issue-return">
+    
+    <top>
+        <VBox styleClass="header-dashboard">
+            <padding>
+                <Insets top="25" right="40" bottom="25" left="40"/>
+            </padding>
+            <HBox alignment="CENTER_LEFT" spacing="15">
+                <Label text="🔄" styleClass="header-icon">
+                    <font>
+                        <Font size="32"/>
+                    </font>
+                </Label>
+                <VBox>
+                    <Label text="Issue / Return Books" styleClass="page-title" wrapText="true">
+                        <font>
+                            <Font name="System Bold" size="28"/>
+                        </font>
+                    </Label>
+                    <Label text="Manage book transactions for students" styleClass="header-subtitle">
+                        <font>
+                            <Font size="14"/>
+                        </font>
+                    </Label>
+                </VBox>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="true" styleClass="scroll-pane-content">
+            <VBox spacing="35" alignment="TOP_CENTER" styleClass="content-dashboard">
+                <padding>
+                    <Insets top="50" right="30" bottom="50" left="30"/>
+                </padding>
+                
+                <!-- Issue/Return Form -->
+                <VBox spacing="25" styleClass="card-enhanced" maxWidth="650" minWidth="350">
+                    <padding>
+                        <Insets top="40" right="40" bottom="40" left="40"/>
+                    </padding>
+                    
+                    <HBox alignment="CENTER_LEFT" spacing="12">
+                        <Label text="📋" styleClass="section-icon">
+                            <font>
+                                <Font size="28"/>
+                            </font>
+                        </Label>
+                        <Label text="Transaction Details" styleClass="section-title">
+                            <font>
+                                <Font name="System Bold" size="22"/>
+                            </font>
+                        </Label>
+                    </HBox>
+                    
+                    <VBox spacing="12">
+                        <Label text="Book ISBN" styleClass="form-label"/>
+                        <TextField fx:id="txtBookIsbn" promptText="Enter the book's ISBN number" styleClass="form-control-large"/>
+                    </VBox>
+                    
+                    <VBox spacing="12">
+                        <Label text="User ID" styleClass="form-label"/>
+                        <TextField fx:id="txtUserId" promptText="Enter student's user ID" styleClass="form-control-large"/>
+                    </VBox>
+                    
+                    <VBox spacing="12">
+                        <Label text="Number of Days (for issue only)" styleClass="form-label"/>
+                        <TextField fx:id="txtDays" promptText="e.g., 14 (default: 2 weeks)" styleClass="form-control-large"/>
+                    </VBox>
+                    
+                    <Separator/>
+                    
+                    <FlowPane hgap="20" vgap="20" alignment="CENTER">
+                        <Button text="📤 Issue Book" onAction="#handleIssueBook" 
+                                styleClass="btn-action btn-action-issue" minWidth="180" minHeight="55">
+                            <font>
+                                <Font size="16" name="System Bold"/>
+                            </font>
+                        </Button>
+                        <Button text="📥 Return Book" onAction="#handleReturnBook" 
+                                styleClass="btn-action btn-action-return" minWidth="180" minHeight="55">
+                            <font>
+                                <Font size="16" name="System Bold"/>
+                            </font>
+                        </Button>
+                    </FlowPane>
+                </VBox>
+                
+                <!-- Instructions Card -->
+                <VBox spacing="18" styleClass="info-box-enhanced" maxWidth="650" minWidth="350">
+                    <padding>
+                        <Insets top="30" right="35" bottom="30" left="35"/>
+                    </padding>
+                    
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label text="ℹ️" styleClass="section-icon">
+                            <font>
+                                <Font size="24"/>
+                            </font>
+                        </Label>
+                        <Label text="Instructions" styleClass="info-title-large">
+                            <font>
+                                <Font name="System Bold" size="18"/>
+                            </font>
+                        </Label>
+                    </HBox>
+                    
+                    <VBox spacing="12">
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="•" styleClass="bullet-point">
+                                <font>
+                                    <Font size="18" name="System Bold"/>
+                                </font>
+                            </Label>
+                            <Label text="To issue a book: Fill in all three fields (ISBN, User ID, Days) and click 'Issue Book'" 
+                                   wrapText="true" styleClass="info-text-large" HBox.hgrow="ALWAYS"/>
+                        </HBox>
+                        
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="•" styleClass="bullet-point">
+                                <font>
+                                    <Font size="18" name="System Bold"/>
+                                </font>
+                            </Label>
+                            <Label text="To return a book: Enter only ISBN and User ID, then click 'Return Book'" 
+                                   wrapText="true" styleClass="info-text-large" HBox.hgrow="ALWAYS"/>
+                        </HBox>
+                        
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="•" styleClass="bullet-point">
+                                <font>
+                                    <Font size="18" name="System Bold"/>
+                                </font>
+                            </Label>
+                            <Label text="Standard loan period: 14 days. You can customize this for each transaction" 
+                                   wrapText="true" styleClass="info-text-large" HBox.hgrow="ALWAYS"/>
+                        </HBox>
+                        
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="•" styleClass="bullet-point">
+                                <font>
+                                    <Font size="18" name="System Bold"/>
+                                </font>
+                            </Label>
+                            <Label text="All passwords are securely hashed using SHA-256 encryption" 
+                                   wrapText="true" styleClass="info-text-large" HBox.hgrow="ALWAYS"/>
+                        </HBox>
+                    </VBox>
+                </VBox>
+                
+            </VBox>
+        </ScrollPane>
+    </center>
+    
+</BorderPane>

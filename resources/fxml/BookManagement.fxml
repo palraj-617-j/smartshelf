@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="controllers.BookManagementController" styleClass="book-management">
+    
+    <top>
+        <VBox styleClass="header-dashboard">
+            <padding>
+                <Insets top="25" right="40" bottom="25" left="40"/>
+            </padding>
+            <HBox alignment="CENTER_LEFT" spacing="15">
+                <Label text="📖" styleClass="header-icon">
+                    <font>
+                        <Font size="32"/>
+                    </font>
+                </Label>
+                <VBox>
+                    <Label text="Book Management" styleClass="page-title" wrapText="true">
+                        <font>
+                            <Font name="System Bold" size="28"/>
+                        </font>
+                    </Label>
+                    <Label text="Add, update, and manage library books" styleClass="header-subtitle">
+                        <font>
+                            <Font size="14"/>
+                        </font>
+                    </Label>
+                </VBox>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="true" styleClass="scroll-pane-content">
+            <VBox spacing="25">
+                <padding>
+                    <Insets top="30" right="30" bottom="30" left="30"/>
+                </padding>
+                
+                <!-- Form Section -->
+                <VBox spacing="20" styleClass="form-section-box">
+                    <padding>
+                        <Insets top="25" right="25" bottom="25" left="25"/>
+                    </padding>
+                    
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label text="📝" styleClass="section-icon">
+                            <font>
+                                <Font size="24"/>
+                            </font>
+                        </Label>
+                        <Label text="Book Details" styleClass="section-title">
+                            <font>
+                                <Font name="System Bold" size="20"/>
+                            </font>
+                        </Label>
+                    </HBox>
+                    
+                    <GridPane hgap="20" vgap="15">
+                        <columnConstraints>
+                            <ColumnConstraints percentWidth="50" minWidth="200"/>
+                            <ColumnConstraints percentWidth="50" minWidth="200"/>
+                        </columnConstraints>
+                        
+                        <VBox spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                            <Label text="ISBN Number" styleClass="form-label"/>
+                            <TextField fx:id="txtIsbn" promptText="978-3-16-148410-0" styleClass="form-control"/>
+                        </VBox>
+                        
+                        <VBox spacing="8" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                            <Label text="Book Title" styleClass="form-label"/>
+                            <TextField fx:id="txtTitle" promptText="Enter book title" styleClass="form-control"/>
+                        </VBox>
+                        
+                        <VBox spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                            <Label text="Author Name" styleClass="form-label"/>
+                            <TextField fx:id="txtAuthor" promptText="Enter author name" styleClass="form-control"/>
+                        </VBox>
+                        
+                        <VBox spacing="8" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <Label text="Category" styleClass="form-label"/>
+                            <TextField fx:id="txtCategory" promptText="e.g., Programming, Fiction" styleClass="form-control"/>
+                        </VBox>
+                        
+                        <VBox spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                            <Label text="Publisher" styleClass="form-label"/>
+                            <TextField fx:id="txtPublisher" promptText="Enter publisher name" styleClass="form-control"/>
+                        </VBox>
+                        
+                        <VBox spacing="8" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                            <Label text="Publication Year" styleClass="form-label"/>
+                            <TextField fx:id="txtYear" promptText="e.g., 2024" styleClass="form-control"/>
+                        </VBox>
+                        
+                        <VBox spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                            <Label text="Shelf Location" styleClass="form-label"/>
+                            <TextField fx:id="txtShelfLocation" promptText="e.g., CS-A-05" styleClass="form-control"/>
+                        </VBox>
+                        
+                        <VBox spacing="8" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                            <Label text="Total Copies" styleClass="form-label"/>
+                            <TextField fx:id="txtTotalCopies" promptText="Number of copies" styleClass="form-control"/>
+                        </VBox>
+                    </GridPane>
+                    
+                    <Separator/>
+                    
+                    <FlowPane hgap="15" vgap="15" alignment="CENTER">
+                        <Button text="➕ Add Book" onAction="#handleAddBook" styleClass="btn-primary" minWidth="130" minHeight="45">
+                            <font>
+                                <Font size="14"/>
+                            </font>
+                        </Button>
+                        <Button text="✏️ Update" onAction="#handleUpdateBook" styleClass="btn-secondary" minWidth="130" minHeight="45">
+                            <font>
+                                <Font size="14"/>
+                            </font>
+                        </Button>
+                        <Button text="🗑️ Delete" onAction="#handleDeleteBook" styleClass="btn-danger" minWidth="130" minHeight="45">
+                            <font>
+                                <Font size="14"/>
+                            </font>
+                        </Button>
+                        <Button text="🔄 Clear" onAction="#handleClear" styleClass="btn-secondary" minWidth="130" minHeight="45">
+                            <font>
+                                <Font size="14"/>
+                            </font>
+                        </Button>
+                    </FlowPane>
+                </VBox>
+                
+                <!-- Table Section -->
+                <VBox spacing="20" styleClass="table-section-box" VBox.vgrow="ALWAYS">
+                    <padding>
+                        <Insets top="25" right="25" bottom="25" left="25"/>
+                    </padding>
+                    
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label text="📚" styleClass="section-icon">
+                            <font>
+                                <Font size="24"/>
+                            </font>
+                        </Label>
+                        <Label text="All Books" styleClass="section-title">
+                            <font>
+                                <Font name="System Bold" size="20"/>
+                            </font>
+                        </Label>
+                    </HBox>
+                    
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <TextField fx:id="txtSearch" promptText="🔍 Search by title..." 
+                                   styleClass="form-control" HBox.hgrow="ALWAYS" minWidth="200"/>
+                        <Button text="Search" onAction="#handleSearch" styleClass="btn-primary" minWidth="110" minHeight="45">
+                            <font>
+                                <Font size="14"/>
+                            </font>
+                        </Button>
+                    </HBox>
+                    
+                    <TableView fx:id="tableBooks" VBox.vgrow="ALWAYS" styleClass="table-view" minHeight="350">
+                        <columns>
+                            <TableColumn fx:id="colIsbn" text="ISBN" prefWidth="130" minWidth="100"/>
+                            <TableColumn fx:id="colTitle" text="Title" prefWidth="220" minWidth="150"/>
+                            <TableColumn fx:id="colAuthor" text="Author" prefWidth="180" minWidth="120"/>
+                            <TableColumn fx:id="colCategory" text="Category" prefWidth="130" minWidth="100"/>
+                            <TableColumn fx:id="colYear" text="Year" prefWidth="80" minWidth="70"/>
+                            <TableColumn fx:id="colShelfLocation" text="Shelf" prefWidth="100" minWidth="80"/>
+                            <TableColumn fx:id="colAvailable" text="Available" prefWidth="90" minWidth="80"/>
+                        </columns>
+                        <columnResizePolicy>
+                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                        </columnResizePolicy>
+                    </TableView>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+    
+</BorderPane>

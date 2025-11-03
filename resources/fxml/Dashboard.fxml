@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="controllers.DashboardController" styleClass="dashboard">
+    
+    <top>
+        <VBox styleClass="header-dashboard">
+            <padding>
+                <Insets top="25" right="40" bottom="25" left="40"/>
+            </padding>
+            <HBox alignment="CENTER_LEFT" spacing="15">
+                <Label text="📚" styleClass="header-icon">
+                    <font>
+                        <Font size="32"/>
+                    </font>
+                </Label>
+                <VBox>
+                    <Label fx:id="lblWelcome" text="Welcome!" styleClass="welcome-text" wrapText="true">
+                        <font>
+                            <Font name="System Bold" size="28"/>
+                        </font>
+                    </Label>
+                    <Label text="Smart Shelf Library System" styleClass="header-subtitle">
+                        <font>
+                            <Font size="14"/>
+                        </font>
+                    </Label>
+                </VBox>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="true" styleClass="scroll-pane-content">
+            <VBox spacing="35" styleClass="content-dashboard">
+                <padding>
+                    <Insets top="40" right="40" bottom="40" left="40"/>
+                </padding>
+                
+                <!-- Statistics Cards -->
+                <VBox spacing="20">
+                    <Label text="Library Statistics" styleClass="section-header">
+                        <font>
+                            <Font name="System Bold" size="20"/>
+                        </font>
+                    </Label>
+                    
+                    <FlowPane hgap="25" vgap="25" alignment="CENTER">
+                        <VBox styleClass="stat-card stat-card-blue" alignment="CENTER" spacing="12" prefWidth="240" minWidth="200">
+                            <padding>
+                                <Insets top="30" right="25" bottom="30" left="25"/>
+                            </padding>
+                            <Label text="📚" styleClass="stat-icon">
+                                <font>
+                                    <Font size="36"/>
+                                </font>
+                            </Label>
+                            <Label text="Total Books" styleClass="stat-label">
+                                <font>
+                                    <Font size="15"/>
+                                </font>
+                            </Label>
+                            <Label fx:id="lblTotalBooks" text="0" styleClass="stat-value">
+                                <font>
+                                    <Font name="System Bold" size="48"/>
+                                </font>
+                            </Label>
+                        </VBox>
+                        
+                        <VBox styleClass="stat-card stat-card-orange" alignment="CENTER" spacing="12" prefWidth="240" minWidth="200">
+                            <padding>
+                                <Insets top="30" right="25" bottom="30" left="25"/>
+                            </padding>
+                            <Label text="📤" styleClass="stat-icon">
+                                <font>
+                                    <Font size="36"/>
+                                </font>
+                            </Label>
+                            <Label text="Issued Books" styleClass="stat-label">
+                                <font>
+                                    <Font size="15"/>
+                                </font>
+                            </Label>
+                            <Label fx:id="lblIssuedBooks" text="0" styleClass="stat-value">
+                                <font>
+                                    <Font name="System Bold" size="48"/>
+                                </font>
+                            </Label>
+                        </VBox>
+                        
+                        <VBox styleClass="stat-card stat-card-green" alignment="CENTER" spacing="12" prefWidth="240" minWidth="200">
+                            <padding>
+                                <Insets top="30" right="25" bottom="30" left="25"/>
+                            </padding>
+                            <Label text="✅" styleClass="stat-icon">
+                                <font>
+                                    <Font size="36"/>
+                                </font>
+                            </Label>
+                            <Label text="Available Books" styleClass="stat-label">
+                                <font>
+                                    <Font size="15"/>
+                                </font>
+                            </Label>
+                            <Label fx:id="lblAvailableBooks" text="0" styleClass="stat-value">
+                                <font>
+                                    <Font name="System Bold" size="48"/>
+                                </font>
+                            </Label>
+                        </VBox>
+                    </FlowPane>
+                </VBox>
+                
+                <!-- Quick Actions -->
+                <VBox spacing="20">
+                    <Label text="Quick Actions" styleClass="section-header">
+                        <font>
+                            <Font name="System Bold" size="20"/>
+                        </font>
+                    </Label>
+                    
+                    <GridPane hgap="20" vgap="20" alignment="CENTER">
+                        <columnConstraints>
+                            <ColumnConstraints percentWidth="50" minWidth="250"/>
+                            <ColumnConstraints percentWidth="50" minWidth="250"/>
+                        </columnConstraints>
+                        
+                        <VBox GridPane.columnIndex="0" GridPane.rowIndex="0">
+                            <Button text="📖 Book Management" onAction="#openBookManagement" 
+                                    styleClass="btn-action btn-action-primary" maxWidth="Infinity" minHeight="70">
+                                <font>
+                                    <Font size="18" name="System Bold"/>
+                                </font>
+                            </Button>
+                        </VBox>
+                        
+                        <VBox GridPane.columnIndex="1" GridPane.rowIndex="0">
+                            <Button text="🔄 Issue / Return Books" onAction="#openIssueReturn" 
+                                    styleClass="btn-action btn-action-secondary" maxWidth="Infinity" minHeight="70">
+                                <font>
+                                    <Font size="18" name="System Bold"/>
+                                </font>
+                            </Button>
+                        </VBox>
+                    </GridPane>
+                </VBox>
+                
+            </VBox>
+        </ScrollPane>
+    </center>
+    
+</BorderPane>
